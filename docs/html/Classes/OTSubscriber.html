@@ -580,17 +580,7 @@ this instance.</p></dd>
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<p>The OpenTok iOS SDK supports a limited number of simultaneous audio-video streams in an app:</p>
-
-<ul>
-<li>On iPad 2 and iPad 3, the limit is four streams. An app can have up to four simultaneous subscribers,
-or one publisher and up to three subscribers.</li>
-<li>On all other supported iOS devices, the limit is two streams. An app can have up to two subscribers,
-or one publisher and one subscriber.</li>
-</ul>
-
-
-<p>Initializing an OTSubscriber causes it to start streaming data from the OpenTok server, regardless of whether
+		<p>Initializing an OTSubscriber causes it to start streaming data from the OpenTok server, regardless of whether
 the view of the OTSubscriber object is added to a superview.</p>
 
 <p>You can stream audio only (without subscribing to the video stream) by setting the

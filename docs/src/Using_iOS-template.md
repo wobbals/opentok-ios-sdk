@@ -8,14 +8,12 @@ Developer and client requirements
 
 * The OpenTok iOS SDK requires XCode 4.2 or later. XCode 4.2 requires Mac OS 10.6.8 or later.
 
-* You need to test OpenTok apps on an iOS device running iOS 5. The OpenTok iOS SDK supports iPhone 3GS and higher, iPod touch 3rd generation and higher, and all iPad versions. 
-
-* The OpenTok iOS SDK supports Wi-Fi only.
+* You need to test OpenTok apps on an iOS device running iOS 5. The OpenTok iOS SDK supports iPhone 4 and higher, iPod touch 4th generation and higher, and all iPad versions. 
 
 * To test OpenTok apps on an iOS device, you will need to register as an Apple iOS developer at
 [http://developer.apple.com/programs/register/](http://developer.apple.com/programs/register/).
 
-* Download the latest version of the OpenTok iOS SDK from [GitHub](https://github.com/opentok/opentok-ios-sdk).
+* Download the latest version of the OpenTok iOS SDK from the [OpenTok iOS SDK forum](http://www.tokbox.com/forums/ios-early-access-f30).
 
 Setting up your development environment
 ---------------------------------------
@@ -56,9 +54,9 @@ For other issues, check the RELEASE_NOTES.txt file in the libOpentok directory.
 Using the sample apps
 ---------------------
 
-* The [OpenTokHello](https://github.com/opentok/OpenTok-iOS-Hello-World) sample app shows the most basic functionality of the OpenTok iOS SDK: connecting to sessions, publishing streams,
+* The [OpenTokHello](OpenTokHello.html) sample app shows the most basic functionality of the OpenTok iOS SDK: connecting to sessions, publishing streams,
 and subscribing to streams.
-* The [OpenTokBasic](https://github.com/opentok/OpenTok-iOS-Basic-Tutorial) sample app uses more of the OpenTok iOS SDK than the OpenTokHello sample app does.
+* The [OpenTokBasic](OpenTokBasic.html) sample app uses more of the OpenTok iOS SDK than the OpenTokHello sample app does.
 
 Creating your own app using the OpenTok iOS SDK
 -----------------------------------------------
@@ -100,15 +98,7 @@ edit the `@interface` declaration in the ViewController.h file to the following:
 See the code in the OpenTokHello application.
 
 
-Switching from staging to production
-------------------------------------
-
-When you are ready to distribute your app (or to test a production version of your app), switch from using the OpenTok staging media server to the
-OpenTok production media server (see [Testing and production](http://www.tokbox.com/opentok/api/tools/js/documentation/overview/production.html)).
-You can specify that your application connects to the OpenTok production server when you call `[OTSession initWithSessionId:delegate:environment:]`.
-
-
 Connect with TokBox and with other OpenTok developers
 -----------------------------------------------------
 
-Your comments and questions are welcome. Come join the conversation at the [OpenTok iOS SDK forum](http://www.tokbox.com/forums/ios).
+Your comments and questions are welcome. Come join the conversation at the [OpenTok iOS SDK forum](http://www.tokbox.com/forums/ios-early-access-f30).

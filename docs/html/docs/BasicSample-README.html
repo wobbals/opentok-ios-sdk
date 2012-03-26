@@ -27,14 +27,14 @@
 				<div id="container">	
 					<h1>The OpenTokBasic sample app</h1>
 
-<p>The OpenTokBasic sample app is a sample app that shows all features of the OpenTok iOS library. It goes into more detail than the <a href="OpenTokHello.html">OpenTokHello sample app</a>.</p>
+<p>The OpenTokBasic sample app is a sample app that shows all features of the OpenTok iOS library. It goes into more detail than the <a href="https://github.com/opentok/OpenTok-iOS-Hello-World">OpenTokHello sample app</a>.</p>
 
 <p>The OpenTokBasic sample app lets you test the entire OpenTok iOS API. In addition to the features available in the OpenTokHello sample app,
 the OpenTokBasic sample app lets you do the following:</p>
 
 <ul>
 <li>Determine the number of connections and streams in a session</li>
-<li>Decide whether to publish audio, video, or both when publishing a stream to a session</li>
+<li>Determine whether to publish audio, video, or both when publishing a stream to a session</li>
 <li>Subscribe to audio, video, or both for streams in the session</li>
 <li>Get information about streams and connections</li>
 <li>Unsubscribe from streams</li>
@@ -43,7 +43,7 @@ the OpenTokBasic sample app lets you do the following:</p>
 
 
 <p>Before you test the sample app, be sure to read <a href="Using_iOS.html">Using the OpenTok iOS SDK</a>. Also, you may want to first look
-at the OpenTokHelloWorld sample app.</p>
+at the <a href="https://github.com/opentok/OpenTok-iOS-Hello-World">OpenTokHelloWorld</a> sample app.</p>
 
 <h2>Testing the sample app</h2>
 
@@ -59,23 +59,16 @@ the Apple iOS Dev Center.</p></li>
 <li><p>Tap the Connect button to connect to the session. Once connected, tap the Publish button.</p>
 
 <p> Note that the number of connections and streams in the session is displayed at the top of the screen. These statistics are dynamically updated.</p></li>
+<li><p>Run the browser_demo.html file, included with the sample app, in a browser on your Mac. Connect and Publish.</p>
+
+<p> You can open the file in multiple browser windows to create multiple connections and streams in the session.</p>
+
+<p> <em>Note:</em> If the web page asks you to set the Flash Player Settings, or if you do not see a display of your camera in the page,
+ see the instructions in <a href="http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html#localTest">&ldquo;Flash Player Settings for local testing&rdquo;</a>
+ (for the OpenTok JavaScript Hello World tutorial).</p></li>
 <li><p>In the iPad app, tap the Unsubscribe button corresponding to a subscribed stream.</p></li>
 <li><p>Tap the Unpublish button.</p></li>
 <li><p>Tap the Disconnect button.</p></li>
-<li><p>Close the app. Now set up the app to subscribe to audio-video streams other than your own:</p>
-
-<ul>
-<li><p>In XCode, near the top of the ViewController.m file, change the <code>subscribeToSelf</code> property to be set to <code>NO</code>:</p>
-
-<pre><code>  static bool subscribeToSelf = NO;
-</code></pre></li>
-<li>Run the app on your iOS device again.</li>
-<li>In a browser on your Mac, load the browser_demo.html file, included with the sample app, to add more streams to the session.
-In the web page, click the Connect and Publish buttons.
-<em>Note:</em> If the web page asks you to set the Flash Player Settings, or if you do not see a display of your camera in the page, see the
-instructions in <a href="http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html#localTest">&ldquo;Flash Player Settings for local testing&rdquo;</a>.</li>
-</ul>
-</li>
 <li><p>You can generate a unique session ID at this URL:</p>
 
 <pre><code>http://staging.tokbox.com/hl/session/create
@@ -88,7 +81,7 @@ instructions in <a href="http://www.tokbox.com/opentok/api/tools/js/tutorials/he
 <h2>Understanding the code</h2>
 
 <p>The OpenTokBasic app builds on the OpenTokHello app, showing more features of the OpenTok iOS SDK.
-Review the description of the <a href="OpenTokHello.html">OpenTokHello sample app</a> for basic information on:</p>
+Review the description of the <a href="https://github.com/opentok/OpenTok-iOS-Hello-World">OpenTokHello sample app</a> for basic information on:</p>
 
 <ul>
 <li>Initializing an OTSession object and connecting to an OpenTok session</li>
@@ -134,7 +127,7 @@ observer updates the <code>_statusLabel</code> UILabel text with the new number 
 
 <pre><code>- (void)session:(OTSession*)mySession didReceiveStream:(OTStream*)stream
 {
-    [self setStatusLabel];
+    _statusLabel.text = [NSString stringWithFormat:@"Connections: %d Streams: %d", _session.connectionCount, _session.streams.count];
     //...
 }
 
@@ -173,6 +166,15 @@ properties to determine whether your app publishes audio, video, or both. The sa
 Your own app can set the <code>publishAudio</code> and <code>publishVideo</code> properties based on other factors, such as user interface selections.</p>
 
 <p>The view of the OTPublisher object is added as a subview of the ViewController&rsquo;s view.</p>
+
+<h3>Setting the name of a published stream</h3>
+
+<p>The name of a stream is an option string that appears at the bottom of the stream&rsquo;s view when the user taps the stream. You set the name
+for the stream by setting the <code>name</code> property of the OTPublisher object before you send the <code>[OTSession publish]</code> message. The sample code
+does this in the <code>doPublish:</code> method (setting the name to the iOS device&rsquo;s name):</p>
+
+<pre><code>_publisher = [[OTPublisher alloc] initWithDelegate:self name:UIDevice.currentDevice.name];
+</code></pre>
 
 <h3>Specifying whether to subscribe to audio, video, or both</h3>
 
@@ -225,7 +227,7 @@ sends the <code>[OTSubscriber close]</code> message:</p>
 <pre><code>[_subscriber close];
 </code></pre>
 
-<p>This causes the app to stop subscribing to the stream. The view of the OTSubscriber is automatically removed from its superview.
+<p>This causes the app to stop subscribing from the stream. The view of the OTSubscriber is automatically removed from its superview.
 Other code in the app removes the SubscriberContainer (and its view) and updates the layout of any remaining subscriber views.</p>
 
 <h3>Disconnecting from a session</h3>
