@@ -52,8 +52,7 @@
 @property(nonatomic, weak) id<OTSubscriberDelegate> delegate;
 
 /**
- * Whether to subscribe to the stream's audio. Setting this property only has an affect if you do so immediately
- * after initializing the OTSubscriber object.
+ * Whether to subscribe to the stream's audio.
  *
  * The default value is YES.
  *

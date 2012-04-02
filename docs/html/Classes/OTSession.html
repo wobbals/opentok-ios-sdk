@@ -46,6 +46,8 @@
 	
 	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
 	
+	<option value="//api/name/environment">&nbsp;&nbsp;&nbsp;&nbsp;environment</option>
+	
 	<option value="//api/name/sessionConnectionStatus">&nbsp;&nbsp;&nbsp;&nbsp;sessionConnectionStatus</option>
 	
 	<option value="//api/name/sessionId">&nbsp;&nbsp;&nbsp;&nbsp;sessionId</option>
@@ -64,6 +66,8 @@
 	<option value="//api/name/disconnect">&nbsp;&nbsp;&nbsp;&nbsp;- disconnect</option>
 	
 	<option value="//api/name/initWithSessionId:delegate:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSessionId:delegate:</option>
+	
+	<option value="//api/name/initWithSessionId:delegate:environment:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithSessionId:delegate:environment:</option>
 	
 	<option value="//api/name/publish:">&nbsp;&nbsp;&nbsp;&nbsp;- publish:</option>
 	
@@ -105,6 +109,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/environment">environment</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sessionConnectionStatus">sessionConnectionStatus</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/sessionId">sessionId</a></span></li>
@@ -124,6 +130,8 @@
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/disconnect">disconnect</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSessionId:delegate:">initWithSessionId:delegate:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithSessionId:delegate:environment:">initWithSessionId:delegate:environment:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/publish:">publish:</a></span></li>
 	
@@ -213,7 +221,7 @@ connect to a session by sending the <a href="#//api/name/connectWithApiKey:token
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/streams">&nbsp;&nbsp;streams</a></code>
-		<span class="tooltip"><p>The streams that are a part of this session.</p></span>
+		<span class="tooltip"><p>The streams that are a part of this session, keyed by streamId.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
@@ -234,6 +242,15 @@ handling messages on behalf of this session.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/environment">&nbsp;&nbsp;environment</a></code>
+		<span class="tooltip"><p>The active environment for this session. The environment determines whether your app will connect to
+the OpenTok staging or production media server (see
+<a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/production.html">Testing and production</a>).</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
 </li>
 						</ul>
 						
@@ -248,6 +265,16 @@ handling messages on behalf of this session.</p></span>
 		<span class="tooltip"><p>Initialize this session with a given <a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/session%5Fcreation.html">session ID</a>
 and delegate before connecting to OpenTok. Send the <a href="#//api/name/connectWithApiKey:token:">[OTSession connectWithApiKey:token:]</a> message
 to connect to the session.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithSessionId:delegate:environment:">&ndash;&nbsp;initWithSessionId:delegate:environment:</a></code>
+		<span class="tooltip"><p>Initialize this session with a given <a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/session%5Fcreation.html">session ID</a>,
+delegate, and environment, before connecting to OpenTok. The environment determines whether your app will
+connect to the OpenTok staging or production media server (see
+<a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/production.html">Testing and production</a>).</p></span>
 	</span>
 	
 	
@@ -408,6 +435,65 @@ handling messages on behalf of this session.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/environment" title="environment"></a>
+	<h3 class="subsubtitle method-title">environment</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The active environment for this session. The environment determines whether your app will connect to
+the OpenTok staging or production media server (see
+<a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/production.html">Testing and production</a>).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (nonatomic) OTSessionEnvironment environment</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Values for this property are defined in the OTSessionEnvironment enum:</p>
+
+<ul>
+<li><code>OTSessionEnvironmentProduction</code> &mdash; The session will connect to the OpenTok production environment. Point your
+OpenTok server-side library to api.opentok.com.</li>
+<li><code>OTSessionEnvironmentStaging</code> &mdash; The session will connect to the OpenTok staging environment. Point your
+OpenTok server-side library to staging.tokbox.com.</li>
+</ul>
+
+
+<p>Once connected, this value is immutable; subsequent calls to <code>setEnvironment</code> will silently fail.</p>
+
+<p>You can set the environment when you initialize an OTSession object by sending the
+<a href="#//api/name/initWithSessionId:delegate:environment:">[OTSession initWithSessionId:delegate:environment:]</a> message.</p>
+
+<p>Alternatively, you can send the <a href="#//api/name/initWithSessionId:delegate:">[OTSession initWithSessionId:delegate:]</a> message and set the
+<a href="#//api/name/environment">[OTSession environment]</a> property before you connect to the session.</p>
+
+<p>Send the <a href="#//api/name/connectWithApiKey:token:">[OTSession connectWithApiKey:token:]</a> message to connect to the session.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/sessionConnectionStatus" title="sessionConnectionStatus"></a>
 	<h3 class="subsubtitle method-title">sessionConnectionStatus</h3>
 	
@@ -439,7 +525,7 @@ handling messages on behalf of this session.</p>
 </ul>
 
 
-<p>On instantiation, expect the <code>sessionConnectionStatus</code> to have the value <code>kSessionConnectionStatus_Disconnected</code>.</p>
+<p>On instantiation, expect the <code>sessionConnectionStatus</code> to have the value <code>OTSessionConnectionStatusDisconnected</code>.</p>
 
 <p>You can use a key-value observer to monitor this property. However, the <a href="../Protocols/OTSessionDelegate.html#//api/name/sessionDidConnect:">[OTSessionDelegate sessionDidConnect:]</a>
 and <a href="../Protocols/OTSessionDelegate.html#//api/name/sessionDidDisconnect:">[OTSessionDelegate sessionDidDisconnect:]</a> messages are sent to the session&rsquo;s delegate when the session
@@ -502,11 +588,11 @@ of this instance. Once initialized, this is an immutable value.</p>
 	
 	
 	<div class="method-subsection brief-description">
-		<p>The streams that are a part of this session.</p>
+		<p>The streams that are a part of this session, keyed by streamId.</p>
 	</div>		
 	
 	
-	<div class="method-subsection method-declaration"><code>@property (readonly, retain) NSMutableDictionary *streams</code></div>
+	<div class="method-subsection method-declaration"><code>@property (readonly, retain) NSDictionary *streams</code></div>
 	
 	
 	
@@ -587,6 +673,11 @@ the session&rsquo;s delegate.</p>
 session&rsquo;s delegate.</p>
 
 <p>Note that sessions automatically disconnect when the app is suspended.</p>
+
+<p>Be sure to set up a delegate method for the [OTSessionDelegate session: didFailWithError:] message. See the
+OTSessionErrorCode emum defined in OTError.h. It defines code values for the error. An error with code
+OTSDKUpdateRequired indicates that the OpenTok iOS SDK used to compile the app is not longer compatible
+with the OpenTok infrastructure.</p>
 	</div>
 	
 	
@@ -686,6 +777,92 @@ to connect to the session.</p>
 	
 	
 	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>See <a href="#//api/name/initWithSessionId:delegate:environment:">[OTSession initWithSessionId:delegate:environment:]</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTSession.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithSessionId:delegate:environment:" title="initWithSessionId:delegate:environment:"></a>
+	<h3 class="subsubtitle method-title">initWithSessionId:delegate:environment:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Initialize this session with a given <a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/session%5Fcreation.html">session ID</a>,
+delegate, and environment, before connecting to OpenTok. The environment determines whether your app will
+connect to the OpenTok staging or production media server (see
+<a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/production.html">Testing and production</a>).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithSessionId:(NSString *)<em>sessionId</em> delegate:(id&lt;OTSessionDelegate&gt;)<em>delegate</em> environment:(OTSessionEnvironment)<em>environment</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>sessionId</em></dt>
+			<dd><p>The session ID of this instance.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>delegate</em></dt>
+			<dd><p>The delegate (OTSessionDelegate) that handles messages on behalf of this session.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>environment</em></dt>
+			<dd><p>The environment that this session will attempt to connect to. Set this parameter to a value in
+the OTSessionEnvironment enum:</p>
+
+<ul>
+<li><code>OTSessionEnvironmentProduction</code> &mdash; The session will connect to the OpenTok production environment. Point your
+OpenTok server-side library to api.opentok.com.</li>
+<li><code>OTSessionEnvironmentStaging</code> &mdash; The session will connect to the OpenTok staging environment. Point your
+OpenTok server-side library to staging.tokbox.com.</li>
+</ul>
+
+
+<p>See <a href="#//api/name/initWithSessionId:delegate:">[OTSession initWithSessionId:delegate:]</a> and <a href="#//api/name/environment">[OTSession environment]</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>The OTSession object, or nil if initialization fails.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Alternatively, you can send the <a href="#//api/name/initWithSessionId:delegate:">[OTSession initWithSessionId:delegate:]</a> message and set the
+<a href="#//api/name/environment">[OTSession environment]</a> property before you connect to the session.</p>
+
+<p>Send the <a href="#//api/name/connectWithApiKey:token:">[OTSession connectWithApiKey:token:]</a> message to connect to the session.</p>
+	</div>
 	
 	
 	

@@ -25,7 +25,7 @@ your own apps:
 
 * **OpenTok.framework** -- The OpenTok iOS library. Note that to use the library you must also include the the headers included in in the Frameworks directory of the OpenTokHelloWorld sample app.
 
-* **Frameworks directory** -- The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS. We cannot pre-link them in the OpenTok.framework, so your project must link them. Expand the "Frameworks" directory of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
+* **Frameworks directory** -- The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS. We cannot pre-link them in the OpenTok framework, so your project must link them. Expand the "Frameworks" directory of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
 
 * **Adding the -ObjC flag** -- Our static library uses Objective-C categories. Your application will crash if you do not load the entire symbol table of the library at linking time. You can read more about this issue [here](http://developer.apple.com/library/mac/#qa/qa1490/_index.html).
 

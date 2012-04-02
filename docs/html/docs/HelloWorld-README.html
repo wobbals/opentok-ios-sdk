@@ -48,18 +48,27 @@ the Apple iOS Dev Center.</p>
 <li><p>In the main XCode project window, click the Run button (or select Product > Run).</p>
 
 <p> The app should start on your connected device. Once the app connects to the OpenTok session, it publishes an audio-video stream, which is displayed onscreen. Then, the audio-video stream shows up as a subscribed stream (along with any other streams currently in the session).</p></li>
-<li><p>You can run the browser_demo.html file, included with the sample app, in a browser on your Mac to add more streams to the session. In the web page, click the Connect and Publish buttons.</p>
+<li><p>Close the app. Now set up the app to subscribe to audio-video streams other than your own:</p>
 
-<p> You can open the file in multiple browser windows to create multiple connections and streams in the session.</p>
+<ul>
+<li><p>In XCode, near the top of the ViewController.m file, change the <code>subscribeToSelf</code> property to be set to <code>NO</code>:</p>
 
-<p> <em>Note:</em> If the web page asks you to set the Flash Player Settings, or if you do not see a display of your camera in the page, see the
- instructions in <a href="http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html#localTest">&ldquo;Flash Player Settings for local testing&rdquo;</a>.</p></li>
+<pre><code>  static bool subscribeToSelf = NO;
+</code></pre></li>
+<li>Run the app on your iOS device again.</li>
+<li>In a browser on your Mac, load the browser_demo.html file, included with the sample app, to add more streams to the session.
+In the web page, click the Connect and Publish buttons.
+<em>Note:</em> If the web page asks you to set the Flash Player Settings, or if you do not see a display of your camera in the page, see the
+instructions in <a href="http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html#localTest">&ldquo;Flash Player Settings for local testing&rdquo;</a>.</li>
+</ul>
+</li>
 <li><p>You can generate a unique session ID at this URL:</p>
 
-<pre><code> http://staging.tokbox.com/hl/session/create
-</code></pre>
+<p> <a href="http://staging.tokbox.com/hl/session/create">http://staging.tokbox.com/hl/session/create</a></p>
 
-<p> Change the <code>kSessionId</code> constant in the ViewController.m file and the <code>sessionId</code> to the new session ID.</p></li>
+<p> Using a unique session ID prevents other test developers from seeing your published streams (and it keeps their streams out of your session).
+ In the ViewController.m file, change the <code>kSessionId</code> constant in the ViewController.m file to the new session ID. Also change the value of the
+ <code>sessionId</code> variable in the browser_demo.html page.</p></li>
 </ol>
 
 
@@ -75,10 +84,8 @@ the Apple iOS Dev Center.</p>
 {
     [super viewDidLoad];
 
-    _session = [OTSession.alloc initWithSessionId:kSessionId
+    _session = [[OTSession.alloc] initWithSessionId:kSessionId
                                         andDelegate:self];
-    _subscribers = [[NSMutableArray alloc] init];
-
     [self doConnect];
 }
 </code></pre>
@@ -114,17 +121,22 @@ the <code>_session</code> object:</p>
 <pre><code>- (void)doPublish
 {
     _publisher = [[OTPublisher alloc] initWithDelegate:self];
+    [_publisher setName:[[UIDevice currentDevice] name]];
     [_session publish:_publisher];
     [self.view addSubview:_publisher.view];
-    [_publisher.view setFrame:CGRectMake(0, topOffset+widgetHeight, widgetWidth, widgetHeight)];
+    [_publisher.view setFrame:CGRectMake(0, 0, widgetWidth, widgetHeight)];
 }
 </code></pre>
+
+<p>The name of a stream is an optional string that appears at the bottom of the stream&rsquo;s view when the user taps the stream (or clicks it in
+a browser). You set the name for the stream by setting the <code>name</code> property of the OTPublisher object before you send the <code>[OTSession publish]</code> message.</p>
 
 <p>The view of the OTPublisher object is added as a subview of the ViewController&rsquo;s view.</p>
 
 <h3>Subscribing to streams</h3>
 
-<p>When a stream is added to a session, the OTSession&rsquo;s delegate&rsquo;s <code>session:didReceiveStream:</code> message is invoked. It then allocates and initializes an OTSubscriber object for the stream, and adds that OTSubscriber object to the <code>_subscribers</code> array:</p>
+<p>When a stream is added to a session, the OTSessionDelegate&rsquo;s <code>session:didReceiveStream:</code> message is sent. It then allocates and initializes
+an OTSubscriber object for the stream, and adds that OTSubscriber object to the <code>_subscribers</code> array:</p>
 
 <pre><code>- (void)session:(OTSession*)mySession didReceiveStream:(OTStream*)stream
 {
@@ -141,32 +153,45 @@ the <code>_session</code> object:</p>
 }
 </code></pre>
 
-<p>Note that you can opt out of subscribing to (and re-displaying) the audio-video stream you are publishing by replacing <code>if(true)</code> with the following:</p>
+<p>This app subscribes to one stream, at most. It either subscribes to the stream you publish, or it subscribes to one of the other streams
+in the session (if there is one), based on the <code>subscribeToSelf</code> property, which is set at the top of the file:</p>
 
-<pre><code>if (stream.connection.connectionId != _session.connection.connectionId) {
+<pre><code>static bool subscribeToSelf = NO;
 </code></pre>
 
-<p>(The connection ID for the stream you publish with match the connection ID for your session.)</p>
+<p>The connection ID for the stream you publish with match the connection ID for your session. (Note that in a real application, a client would not
+normally subscribe to its own published stream. However, for this test app, it is convenient for the client to subscribe to its own stream.)</p>
+
+<p>If the session does not yet have the <code>_subscriber</code> property set to an OTSubscriber object, it does so in this method.</p>
 
 <p>The OTSubscriber&rsquo;s delegate is sent the <code>subscriberDidConnectToStream</code> message when the subscriber connects to the stream. At this point, the code adds the OTSubscriber&rsquo;s view to as a subview of the ViewController:</p>
 
 <pre><code>- (void)subscriberDidConnectToStream:(OTSubscriber*)subscriber
 {
     NSLog(@"subscriberDidConnectToStream (%@)", subscriber.stream.connection.connectionId);
-    [subscriber.view setFrame:CGRectMake(widgetWidth * subscriberCount++, topOffset, widgetWidth, widgetHeight)];
-    [[self view] addSubview:subscriber.view];
-
-    [self updateSubscriberViews];
+    [subscriber.view setFrame:CGRectMake(widgetWidth * subscriberCount++, widgetHeight, widgetWidth, widgetHeight)];
+    [self.view addSubview:subscriber.view];
 }
 </code></pre>
 
-<p>The position of the OTSubscriber&rsquo;s view object is based on the number of subscribers (which is stored in the <code>subscriberCount</code> variable).</p>
+<p>The OpenTok iOS SDK supports a limited number of simultaneous audio-video streams in an app:</p>
+
+<ul>
+<li>On iPad 2 and iPad 3, the limit is four streams. An app can have up to four simultaneous subscribers, or one publisher and up to three subscribers.</li>
+<li>On all other supported iOS devices, the limit is two streams. An app can have up to two subscribers, or one publisher and one subscriber.</li>
+</ul>
+
 
 <h3>Removing dropped streams</h3>
 
-<p>As streams leave the session (when clients disconnect or stop publishing), the OTSession delegate is sent the <code>session:didDropStream:</code> message. The code loops through each OTSubscriber in the <code>_subscribers</code> array to see if it matches the stream that was dropped. It does this by comparing the <code>streamId</code> property of the dropped OTStream object with the <code>stream.streamId</code> property of each OTSubscriber in the array:</p>
+<p>As streams leave the session (when clients disconnect or stop publishing), the OTSession delegate is sent the <code>session:didDropStream:</code> message.</p>
 
-<pre><code>- (void)session:(OTSession*)session didDropStream:(OTStream*)stream {
+<p>Subscriber objects are automatically removed from their superview when their stream is dropped.</p>
+
+<p>The code checks to see if you are subscribing to streams other than your own. If so, it checks to see if the dropped stream matches the subscriber&rsquo;s
+stream. It does this by comparing the <code>streamId</code> property of the dropped OTStream object with the <code>stream.streamId</code> property of the OTSubscriber:</p>
+
+<pre><code>- (void)session:(OTSession*)session didDropStream:(OTStream*)stream{
     NSLog(@"session didDropStream (%@)", stream.streamId);
     if (!subscribeToSelf
         &amp;&amp; _subscriber
@@ -178,14 +203,16 @@ the <code>_session</code> object:</p>
 }
 </code></pre>
 
-<p>Subscriber objects are automatically removed from their superview when their stream is dropped.</p>
+<p>The <code>updateSubscriber</code> method subscribes to another stream in the session (other than the one you publish), if there is one. The
+<code>OTSession.streams</code> property is a dictionary of all streams in a session:</p>
 
-<p>The <code>updateSubscriberViews</code> method readjusts the positions of the remaining subscribers:</p>
-
-<pre><code>- (void)updateSubscriberViews {
-    subscriberCount = 0;
-    for (OTSubscriber* subscriber in _subscribers) {
-        [subscriber.view setFrame:CGRectMake(widgetWidth * subscriberCount++, topOffset, widgetWidth, widgetHeight)];
+<pre><code>- (void)updateSubscriber {
+    for (NSString* streamId in _session.streams) {
+        OTStream* stream = [_session.streams valueForKey:streamId];
+        if (stream.connection.connectionId != _session.connection.connectionId) {
+            _subscriber = [[OTSubscriber alloc] initWithStream:stream delegate:self];
+            break;
+        }
     }
 }
 </code></pre>
