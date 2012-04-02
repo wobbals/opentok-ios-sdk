@@ -18,19 +18,18 @@ Developer and client requirements
 Setting up your development environment
 ---------------------------------------
 
-Included in the OpenTok iOS SDK download file is the OpenTokHello sample app. This app publishes to a demo session, and subscribes to its own stream (or any other stream in the session). Included in the sample app directory is the OpenTok iOS library and other files you will need to develop your own apps.
+Download the [OpenTokHelloWorld sample app](https://github.com/opentok/OpenTok-iOS-Hello-World) and the
+[OpenTok iOS SDK](https://github.com/opentok/opentok-iOS-sdk). The OpenTokHelloWorld app publishes to a demo session, and subscribes to its own stream
+(or any other stream in the session). Included in the sample app directory is the OpenTok iOS library and other files you will need to develop
+your own apps:
 
-* **libOpentok.a** -- The OpenTok iOS library. Note that to use the library you must also include the opentok.bundle file and the headers included in in the Frameworks directory of the sample app.
+* **OpenTok.framework** -- The OpenTok iOS library. Note that to use the library you must also include the the headers included in in the Frameworks directory of the OpenTokHelloWorld sample app.
 
-* The **opentok.bundle** file -- This file includes required assets. Include it with your project.
-
-* **Frameworks directory** -- The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS. We cannot pre-link them in the libOpentok.a static library, so your project must link them. Expand the "Frameworks" directory of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
+* **Frameworks directory** -- The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS. We cannot pre-link them in the OpenTok.framework, so your project must link them. Expand the "Frameworks" directory of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
 
 * **Adding the -ObjC flag** -- Our static library uses Objective-C categories. Your application will crash if you do not load the entire symbol table of the library at linking time. You can read more about this issue [here](http://developer.apple.com/library/mac/#qa/qa1490/_index.html).
 
 	Add -ObjC to the "Other Linker Flags" property of your build target.
-
-* A **docs** directory -- This includes the reference documentation for the OpenTok iOS SDK. Install it into XCode to add documentation and auto-completion of your code.
 
 You can connect to the same OpenTok session that the OpenTokHello sample app uses by going to http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html. You can generate a new session ID at this URL:
 
@@ -45,7 +44,7 @@ Known issues
 
 * Some features available in the OpenTok SDK for other platforms (such as JavaScript) are not supported in the OpenTok iOS SDK. These unsupported features include peer-to-peer streaming and archiving.
 
-* The OpenTok iOS SDK supports iOS 5 only.
+* The OpenTok iOS SDK supports iOS 5 and later only.
 
 * Our graphics rendering pipeline causes this error to be logged when debugging: "CGContextDrawImage: invalid context 0x0." This should not affect the performance of your app. If you experience video quality issues, please let us know.
 
@@ -76,10 +75,11 @@ to copy them from the OpenTokHello sample app.
 	of the OpenTokHello project into the frameworks folder of your project.
 	
 	The additional frameworks and libraries include the following: AudioToolbox.framework, AVFoundation.framework, CFNetwork.framework,
-	CoreAudio.framework, CoreMedia.framework, CoreVideo.framework, libz.dylib, libstdc++.dylib, MobileCoreServices.framework,
+	CoreAudio.framework, CoreMedia.framework, CoreTelephony.framework, CoreVideo.framework, libz.dylib, libstdc++.dylib, MobileCoreServices.framework,
 	OpenGLES.framework, QuartzCore.framework, Security.framework, SystemConfiguration.framework.
 
-6. In the project manager, select your project and click the Build Settings tab. At the top of the Build Settings tab, click All (to reveal all build settings). Under the Linking section, click to the right of Other Linker Flags, and add `-ObjC`.
+4. In the project manager, select your project and click the Build Settings tab. At the top of the Build Settings tab, click All
+(to reveal all build settings). Under the Linking section, click to the right of Other Linker Flags, and add `-ObjC`.
 
 Next steps:
 
@@ -96,7 +96,6 @@ edit the `@interface` declaration in the ViewController.h file to the following:
 
 4. Add code to initialize and connect to an OpenTok session. And add code to publish and subscribe to streams.
 See the code in the OpenTokHello application.
-
 
 Connect with TokBox and with other OpenTok developers
 -----------------------------------------------------
