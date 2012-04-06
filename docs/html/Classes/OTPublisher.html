@@ -40,6 +40,8 @@
 	
 	<option value="properties">Properties</option>
 	
+	<option value="//api/name/cameraPosition">&nbsp;&nbsp;&nbsp;&nbsp;cameraPosition</option>
+	
 	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
 	
 	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
@@ -85,6 +87,8 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Controlling audio and video output for a publisher">Controlling audio and video output for a publisher</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Setting publisher device configuration">Setting publisher device configuration</a></span></li>
+	
 </ul></li>
 
 
@@ -92,6 +96,8 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cameraPosition">cameraPosition</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
 	
@@ -253,6 +259,24 @@ otherwise, it will have no effect.</p></span>
 </li>
 						</ul>
 						
+						
+						<a title="Setting publisher device configuration" name="task_Setting publisher device configuration"></a>
+						<h3 class="subsubtitle task-title">Setting publisher device configuration</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cameraPosition">&nbsp;&nbsp;cameraPosition</a></code>
+		<span class="tooltip"><p>The preferred camera position. When setting this property, if the change is possible, the publisher
+will use the camera with the specified position. If the publisher has begun publishing, getting
+this property returns the current camera position; if the publisher has not yet begun publishing,
+getting this property returns the preferred camera position.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
 					</div>
 					
 					
@@ -262,6 +286,43 @@ otherwise, it will have no effect.</p></span>
 					<div class="section section-methods">
 						<a title="Properties" name="properties"></a>
 						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cameraPosition" title="cameraPosition"></a>
+	<h3 class="subsubtitle method-title">cameraPosition</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>The preferred camera position. When setting the property, if the change is possible, the publisher
+will use the camera with the specified position. If the publisher has begun publishing, getting
+this property returns the current camera position; if the publisher has not yet begun publishing,
+getting this property returns the preferred camera position.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (atomic) AVCaptureDevicePosition cameraPosition</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">OTPublisher.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/delegate" title="delegate"></a>

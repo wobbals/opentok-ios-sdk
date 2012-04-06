@@ -33,26 +33,26 @@
 
 <ul>
 <li><p>The OpenTok iOS SDK requires XCode 4.2 or later. XCode 4.2 requires Mac OS 10.6.8 or later.</p></li>
-<li><p>You need to test OpenTok apps on an iOS device running iOS 5. The OpenTok iOS SDK supports iPhone 3GS and higher, iPod touch 3rd generation and higher, and all iPad versions.</p></li>
-<li><p>The OpenTok iOS SDK supports Wi-Fi only.</p></li>
+<li><p>You need to test OpenTok apps on an iOS device running iOS 5. The OpenTok iOS SDK supports iPhone 4 and higher, iPod touch 4th generation and higher, and all iPad versions.</p></li>
 <li><p>To test OpenTok apps on an iOS device, you will need to register as an Apple iOS developer at
 <a href="http://developer.apple.com/programs/register/">http://developer.apple.com/programs/register/</a>.</p></li>
-<li><p>Download the latest version of the OpenTok iOS SDK from <a href="https://github.com/opentok/opentok-ios-sdk">GitHub</a>.</p></li>
+<li><p>Download the latest version of the OpenTok iOS SDK from the <a href="http://www.tokbox.com/forums/ios-early-access-f30">OpenTok iOS SDK forum</a>.</p></li>
 </ul>
 
 
 <h2>Setting up your development environment</h2>
 
-<p>Included in the OpenTok iOS SDK download file is the OpenTokHello sample app. This app publishes to a demo session, and subscribes to its own stream (or any other stream in the session). Included in the sample app directory is the OpenTok iOS library and other files you will need to develop your own apps.</p>
+<p>Download the <a href="https://github.com/opentok/OpenTok-iOS-Hello-World">OpenTokHelloWorld sample app</a> and the
+<a href="https://github.com/opentok/opentok-iOS-sdk">OpenTok iOS SDK</a>. The OpenTokHelloWorld app publishes to a demo session, and subscribes to its own stream
+(or any other stream in the session). Included in the sample app directory is the OpenTok iOS library and other files you will need to develop
+your own apps:</p>
 
 <ul>
-<li><p><strong>libOpentok.a</strong> &mdash; The OpenTok iOS library. Note that to use the library you must also include the opentok.bundle file and the headers included in in the Frameworks directory of the sample app.</p></li>
-<li><p>The <strong>opentok.bundle</strong> file &mdash; This file includes required assets. Include it with your project.</p></li>
-<li><p><strong>Frameworks directory</strong> &mdash; The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS. We cannot pre-link them in the libOpentok.a static library, so your project must link them. Expand the &ldquo;Frameworks&rdquo; directory of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.</p></li>
+<li><p><strong>OpenTok.framework</strong> &mdash; The OpenTok iOS library. Note that to use the library you must also include the the headers included in in the Frameworks directory of the OpenTokHelloWorld sample app.</p></li>
+<li><p><strong>Frameworks directory</strong> &mdash; The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS. We cannot pre-link them in the OpenTok framework, so your project must link them. Expand the &ldquo;Frameworks&rdquo; directory of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.</p></li>
 <li><p><strong>Adding the -ObjC flag</strong> &mdash; Our static library uses Objective-C categories. Your application will crash if you do not load the entire symbol table of the library at linking time. You can read more about this issue <a href="http://developer.apple.com/library/mac/#qa/qa1490/_index.html">here</a>.</p>
 
 <p>  Add -ObjC to the &ldquo;Other Linker Flags&rdquo; property of your build target.</p></li>
-<li><p>A <strong>docs</strong> directory &mdash; This includes the reference documentation for the OpenTok iOS SDK. Install it into XCode to add documentation and auto-completion of your code.</p></li>
 </ul>
 
 
@@ -69,7 +69,7 @@
 
 <ul>
 <li><p>Some features available in the OpenTok SDK for other platforms (such as JavaScript) are not supported in the OpenTok iOS SDK. These unsupported features include peer-to-peer streaming and archiving.</p></li>
-<li><p>The OpenTok iOS SDK supports iOS 5 only.</p></li>
+<li><p>The OpenTok iOS SDK supports iOS 5 and later only.</p></li>
 <li><p>Our graphics rendering pipeline causes this error to be logged when debugging: &ldquo;CGContextDrawImage: invalid context 0x0.&rdquo; This should not affect the performance of your app. If you experience video quality issues, please let us know.</p></li>
 </ul>
 
@@ -100,9 +100,10 @@ to copy them from the OpenTokHello sample app.</p>
   of the OpenTokHello project into the frameworks folder of your project.</p>
 
 <p>  The additional frameworks and libraries include the following: AudioToolbox.framework, AVFoundation.framework, CFNetwork.framework,
-  CoreAudio.framework, CoreMedia.framework, CoreVideo.framework, libz.dylib, libstdc++.dylib, MobileCoreServices.framework,
+  CoreAudio.framework, CoreMedia.framework, CoreTelephony.framework, CoreVideo.framework, libz.dylib, libstdc++.dylib, MobileCoreServices.framework,
   OpenGLES.framework, QuartzCore.framework, Security.framework, SystemConfiguration.framework.</p></li>
-<li><p>In the project manager, select your project and click the Build Settings tab. At the top of the Build Settings tab, click All (to reveal all build settings). Under the Linking section, click to the right of Other Linker Flags, and add <code>-ObjC</code>.</p></li>
+<li><p>In the project manager, select your project and click the Build Settings tab. At the top of the Build Settings tab, click All
+(to reveal all build settings). Under the Linking section, click to the right of Other Linker Flags, and add <code>-ObjC</code>.</p></li>
 </ol>
 
 
@@ -124,15 +125,9 @@ See the code in the OpenTokHello application.</p></li>
 </ol>
 
 
-<h2>Switching from staging to production</h2>
-
-<p>When you are ready to distribute your app (or to test a production version of your app), switch from using the OpenTok staging media server to the
-OpenTok production media server (see <a href="http://www.tokbox.com/opentok/api/tools/js/documentation/overview/production.html">Testing and production</a>).
-You can specify that your application connects to the OpenTok production server when you call <code>[OTSession initWithSessionId:delegate:environment:]</code>.</p>
-
 <h2>Connect with TokBox and with other OpenTok developers</h2>
 
-<p>Your comments and questions are welcome. Come join the conversation at the <a href="http://www.tokbox.com/forums/ios">OpenTok iOS SDK forum</a>.</p>
+<p>Your comments and questions are welcome. Come join the conversation at the <a href="http://www.tokbox.com/forums/ios-early-access-f30">OpenTok iOS SDK forum</a>.</p>
 				</div>
 				<div id="footer">
 					<hr />
