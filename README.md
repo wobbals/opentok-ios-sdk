@@ -17,3 +17,13 @@ https://github.com/opentok/OpenTok-iOS-Hello-World
 https://github.com/opentok/OpenTok-iOS-Basic-Tutorial
 
 Support is available at the OpenTok forums: http://www.tokbox.com/forums/
+
+New features
+------------
+
+April 5, 2011
+
+* [OTPublisher cameraPosition] -- The preferred camera position. When setting the property, if the change is possible, the publisher will use the camera
+with the specified position. If the publisher has begun publishing, getting this property returns the current camera position; if the publisher has not yet
+begun publishing, getting this property returns the preferred camera position. Valid values are defined in the AVCaptureDevicePosition enum.
+  
