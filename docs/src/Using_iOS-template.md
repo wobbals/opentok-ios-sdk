@@ -46,6 +46,8 @@ Known issues
 
 * The OpenTok iOS SDK supports iOS 5 and later only.
 
+* Videos published from iOS devices stutter when a web client with Flash Player 11.2 subscribes to them. We are researching this issue.
+
 * Our graphics rendering pipeline causes this error to be logged when debugging: "CGContextDrawImage: invalid context 0x0." This should not affect the performance of your app. If you experience video quality issues, please let us know.
 
 For other issues, check the RELEASE_NOTES.txt file in the libOpentok directory.
