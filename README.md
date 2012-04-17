@@ -3,7 +3,9 @@ OpenTok iOS SDK
 
 This package contains what you need to get you started using the OpenTok iOS SDK.
 
-The OpenTok iOS SDK lets you use OpenTok video sessions in apps you build for iPad, iPhone, and iPod touch devices. This means you can use OpenTok video sessions that connect iOS users with each other and with web clients. For information on OpenTok, see http://http://www.tokbox.com/.
+The OpenTok iOS SDK lets you use OpenTok video sessions in apps you build for iPad, iPhone, and iPod touch devices.
+This means you can use OpenTok video sessions that connect iOS users with each other and with web clients.
+For information on OpenTok, see http://www.tokbox.com/.
 
 Documentation of the SDK is available here: 
 
@@ -27,3 +29,9 @@ April 5, 2011
 with the specified position. If the publisher has begun publishing, getting this property returns the current camera position; if the publisher has not yet
 begun publishing, getting this property returns the preferred camera position. Valid values are defined in the AVCaptureDevicePosition enum.
   
+Known issues
+------------
+
+See the list of Known Issues posted here:
+
+https://github.com/opentok/opentok-ios-sdk/blob/master/docs/src/Using_iOS-template.md
