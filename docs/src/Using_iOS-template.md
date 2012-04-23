@@ -13,7 +13,8 @@ Developer and client requirements
 * To test OpenTok apps on an iOS device, you will need to register as an Apple iOS developer at
 [http://developer.apple.com/programs/register/](http://developer.apple.com/programs/register/).
 
-* Download the latest version of the OpenTok iOS SDK from the [OpenTok iOS SDK forum](http://www.tokbox.com/forums/ios-early-access-f30).
+* Download the latest version of the
+[OpenTok iOS SDK](https://github.com/opentok/opentok-iOS-sdk).
 
 Setting up your development environment
 ---------------------------------------
@@ -102,4 +103,4 @@ See the code in the OpenTokHello application.
 Connect with TokBox and with other OpenTok developers
 -----------------------------------------------------
 
-Your comments and questions are welcome. Come join the conversation at the [OpenTok iOS SDK forum](http://www.tokbox.com/forums/ios-early-access-f30).
+Your comments and questions are welcome. Come join the conversation at the [OpenTok iOS SDK forum](http://www.tokbox.com/forums/ios).
