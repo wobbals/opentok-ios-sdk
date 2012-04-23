@@ -23,7 +23,12 @@ Support is available at the OpenTok forums: http://www.tokbox.com/forums/
 New features
 ------------
 
-April 5, 2011
+April 23, 2012
+
+* Fixed a bug where the aspect ratio for publishers was incorrect at certain orientations.
+* Improved average connection time for subscribers. Delegates should receive the [OTSubscriberDelegate subscriberVideoDataReceived:] message a bit faster.
+
+April 5, 2012
 
 * [OTPublisher cameraPosition] -- The preferred camera position. When setting this property, if the change is possible, the publisher will use the camera
 with the specified position. If the publisher has begun publishing, getting this property returns the current camera position; if the publisher has not yet
