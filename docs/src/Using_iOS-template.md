@@ -25,9 +25,16 @@ Download the [OpenTokHelloWorld sample app](https://github.com/opentok/OpenTok-i
 (or any other stream in the session). Included in the sample app directory is the OpenTok iOS library and other files you will need to develop
 your own apps:
 
-* **OpenTok.framework** -- The OpenTok iOS library. Note that to use the library you must also include the the headers included in in the Frameworks directory of the OpenTokHelloWorld sample app.
+* **Opentok.framework** -- Add this framework to your project. Note that to use the library you must also 
+include the Opentok.bundle file and the headers included in in the Frameworks directory of the OpenTokHelloWorld
+sample app.
 
-* **Frameworks directory** -- The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS. We cannot pre-link them in the OpenTok framework, so your project must link them. Expand the "Frameworks" directory of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
+* **Opentok.bundle** -- Add the Opentok.bundle file to your project. The Opentok.bundle file is located
+in the Opentok.framework/Versions/A/Resources subdirectory of the OpenTok iOS SDK. 
+
+* **Frameworks directory** -- The OpenTok iOS library uses linked frameworks and dynamic libraries provided by iOS.
+We cannot pre-link them in the OpenTok framework, so your project must link them. Expand the "Frameworks" directory
+of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
 
 * **Adding the -ObjC flag** -- Our static library uses Objective-C categories. Your application will crash if you do not load the entire symbol table of the library at linking time. You can read more about this issue [here](http://developer.apple.com/library/mac/#qa/qa1490/_index.html).
 
@@ -70,9 +77,14 @@ Here are the basic steps in creating your own app:
 
 2. Open the project navigator in Xcode.
 
-2. Drag the Opentok.framework directory from the Mac OS finder to the Frameworks directory for in XCode.
+3. Drag the Opentok.framework directory from the Mac OS Finder to the Frameworks directory for for your project in XCode.
 
-3. The OpenTok framework requires a few other frameworks and libraries to be added to your project. The easiest way to add them is
+4. Drag the Opentok.bundle file from the Mac OS Finder to root directory for your project in XCode.
+
+	The Opentok.bundle file is located in the Opentok.framework/Versions/A/Resources subdirectory of the OpenTok iOS SDK.
+
+
+5. The OpenTok framework requires a few other frameworks and libraries to be added to your project. The easiest way to add them is
 to copy them from the OpenTokHello sample app.
 
 	Open the OpenTokHello sample app in XCode. Drag all of the additional frameworks from the frameworks folder (in the project navigator)
@@ -82,7 +94,7 @@ to copy them from the OpenTokHello sample app.
 	CoreAudio.framework, CoreMedia.framework, CoreTelephony.framework, CoreVideo.framework, libz.dylib, libstdc++.dylib, MobileCoreServices.framework,
 	OpenGLES.framework, QuartzCore.framework, Security.framework, SystemConfiguration.framework.
 
-4. In the project manager, select your project and click the Build Settings tab. At the top of the Build Settings tab, click All
+6. In the project manager, select your project and click the Build Settings tab. At the top of the Build Settings tab, click All
 (to reveal all build settings). Under the Linking section, click to the right of Other Linker Flags, and add `-ObjC`.
 
 Next steps:
