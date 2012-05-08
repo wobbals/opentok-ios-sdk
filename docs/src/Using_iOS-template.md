@@ -36,10 +36,6 @@ in the Opentok.framework/Versions/A/Resources subdirectory of the OpenTok iOS SD
 We cannot pre-link them in the OpenTok framework, so your project must link them. Expand the "Frameworks" directory
 of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
 
-* **Adding the -ObjC flag** -- Our static library uses Objective-C categories. Your application will crash if you do not load the entire symbol table of the library at linking time. You can read more about this issue [here](http://developer.apple.com/library/mac/#qa/qa1490/_index.html).
-
-	Add -ObjC to the "Other Linker Flags" property of your build target.
-
 You can connect to the same OpenTok session that the OpenTokHello sample app uses by going to http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html. You can generate a new session ID at this URL:
 
 http://staging.tokbox.com/hl/session/create
@@ -93,9 +89,6 @@ to copy them from the OpenTokHello sample app.
 	The additional frameworks and libraries include the following: AudioToolbox.framework, AVFoundation.framework, CFNetwork.framework,
 	CoreAudio.framework, CoreMedia.framework, CoreTelephony.framework, CoreVideo.framework, libz.dylib, libstdc++.dylib, MobileCoreServices.framework,
 	OpenGLES.framework, QuartzCore.framework, Security.framework, SystemConfiguration.framework.
-
-6. In the project manager, select your project and click the Build Settings tab. At the top of the Build Settings tab, click All
-(to reveal all build settings). Under the Linking section, click to the right of Other Linker Flags, and add `-ObjC`.
 
 Next steps:
 
