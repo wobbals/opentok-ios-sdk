@@ -19,6 +19,11 @@
  * A publisher captures an audio-video stream from the device's microphone and camera. You can then
  * publish the audio-video stream to an OpenTok session by sending the <[OTSession publish:]>
  * message.
+ *
+ * The OpenTok iOS SDK supports publishing on all devices, except the iPhone 3GS.
+ * (Only subscribing is supported on the iPhone 3GS.) For a list of supported devices,
+ * see "Developer and client requirements" in [Using the OpenTok iOS
+ * SDK](http://www.tokbox.com/opentok/ios/docs/docs/Using_iOS.html)
  */
 @interface OTPublisher : NSObject 
 
