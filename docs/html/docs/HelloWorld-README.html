@@ -26,12 +26,15 @@
 			<div id="overview_contents" role="main">
 				<div id="container">	
 					<h1>The OpenTokHello sample app</h1>
+<p>The OpenTok-iOS-Hello-World sample app is available at <a href='https://github.com/opentok/OpenTok-iOS-Hello-World'>https://github.com/opentok/OpenTok-iOS-Hello-World</a>.</p>
+
+<p><strong><em>Important:</em></strong> Be sure to git clone with &mdash;recursive to grab the required OpenTok iOS SDK submodule!</p>
 
 <p>The OpenTokHello sample app is a basic sample app that shows the most basic features of the OpenTok iOS SDK.</p>
 
 <p>Once the app connects to the OpenTok session, it publishes an audio-video stream, which is displayed onscreen. Then, the audio-video stream shows up as a subscribed stream (along with any other streams currently in the session).</p>
 
-<p>Before you test the sample app, be sure to read <a href="Using_iOS.html">Using the OpenTok iOS SDK</a>.</p>
+<p>Before you test the sample app, be sure to read <a href="http://www.tokbox.com/opentok/ios/docs/docs/Using_iOS.html">Using the OpenTok iOS SDK</a>.</p>
 
 <h2>Testing the sample app</h2>
 
@@ -84,7 +87,7 @@ instructions in <a href="http://www.tokbox.com/opentok/api/tools/js/tutorials/he
 {
     [super viewDidLoad];
 
-    _session = [[OTSession.alloc] initWithSessionId:kSessionId
+    _session = [[OTSession alloc] initWithSessionId:kSessionId
                                         andDelegate:self];
     [self doConnect];
 }
@@ -228,11 +231,20 @@ stream. It does this by comparing the <code>streamId</code> property of the drop
 }
 </code></pre>
 
+<p>If an app cannot connect to the session (perhaps because of no network connection), the OTSubscriber&rsquo;s delegate is sent
+the <code>session: didFailWithError:</code> message:</p>
+
+<pre><code>- (void)session:(OTSession*)session didFailWithError:(OTError*)error {
+    NSLog(@"sessionDidFail");
+    [self showAlert:[NSString stringWithFormat:@"There was an error connecting to session %@", session.sessionId]];
+}
+</code></pre>
+
 <h2>Next steps</h2>
 
-<p>The <a href="https://github.com/opentok/OpenTok-iOS-Basic-Tutorial">OpenTokBasic sample app</a> uses more features of the OpenTok iOS SDK than the OpenTokHello app does.</p>
+<p>The <a href="BasicSample-README.html">OpenTokBasic sample app</a> uses more features of the OpenTok iOS SDK than the OpenTokHello app does.</p>
 
-<p>For details on the full OpenTok iOS API, see the <a href="../index.html">reference documentation</a>.</p>
+<p>For details on the full OpenTok iOS API, see the <a href="http://www.tokbox.com/opentok/ios/docs/index.html">reference documentation</a>.</p>
 				</div>
 				<div id="footer">
 					<hr />
