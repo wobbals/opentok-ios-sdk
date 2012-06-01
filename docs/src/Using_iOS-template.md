@@ -60,7 +60,7 @@ Using the sample apps
 
 * The [OpenTokHello](https://github.com/opentok/OpenTok-iOS-Hello-World) sample app shows the most basic functionality of the OpenTok iOS SDK: connecting to sessions, publishing streams,
 and subscribing to streams.
-* The [OpenTokBasic](https://github.com/opentok/opentok-iOS-sdk) sample app uses more of the OpenTok iOS SDK than the OpenTokHello sample app does.
+* The [OpenTokBasic](https://github.com/opentok/opentok-iOS-Basic-Tutorial) sample app uses more of the OpenTok iOS SDK than the OpenTokHello sample app does.
 
 Creating your own app using the OpenTok iOS SDK
 -----------------------------------------------
