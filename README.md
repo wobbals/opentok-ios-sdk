@@ -22,6 +22,9 @@ Support is available at the OpenTok forums: http://www.tokbox.com/forums/
 
 New features
 ------------
+June 5, 2012
+
+* Added OTVideoView, which gives view hierarchy access to components of a viewable object.
 
 April 23, 2012
 

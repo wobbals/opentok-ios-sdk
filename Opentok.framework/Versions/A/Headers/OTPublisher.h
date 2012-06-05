@@ -23,7 +23,7 @@
  * The OpenTok iOS SDK supports publishing on all devices, except the iPhone 3GS.
  * (Only subscribing is supported on the iPhone 3GS.) For a list of supported devices,
  * see "Developer and client requirements" in [Using the OpenTok iOS
- * SDK](http://www.tokbox.com/opentok/ios/docs/docs/Using_iOS.html)
+ * SDK](http://www.tokbox.com/opentok/ios/docs/docs/Using_iOS.html).
  */
 @interface OTPublisher : NSObject 
 
@@ -63,13 +63,13 @@
 /**
  * The session that owns this publisher.
  */
-@property(readonly, retain) OTSession* session;
+@property(readonly, readonly) OTSession* session;
 
 /**
  * The view for this publisher. If this view becomes visible, it will 
  * display a preview of the active camera feed.
  */
-@property(readonly, retain) UIView* view;
+@property(readonly, readonly) OTVideoView* view;
 
 /**
  * A string that will be associated with this publisher's stream. This string is displayed at the bottom of publisher
@@ -81,7 +81,7 @@
  * 
  * This value defaults to an empty string.
  */
-@property(nonatomic, retain) NSString* name;
+@property(nonatomic, copy) NSString* name;
 
 /** @name Controlling audio and video output for a publisher */
 

@@ -8,8 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-
-@class OTSession, OTStream, OTError;
+#import "Opentok.h"
 
 @protocol OTSubscriberDelegate;
 
@@ -43,7 +42,7 @@
  * view to your view heirarchy to display a video
  * stream.
  */
-@property(nonatomic, readonly) UIView* view;
+@property(nonatomic, readonly) OTVideoView* view;
 
 /**
  * The <OTSubscriberDelegate> object that serves as a delegate,
