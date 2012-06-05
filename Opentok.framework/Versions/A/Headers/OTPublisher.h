@@ -63,13 +63,13 @@
 /**
  * The session that owns this publisher.
  */
-@property(readonly, readonly) OTSession* session;
+@property(readonly) OTSession* session;
 
 /**
  * The view for this publisher. If this view becomes visible, it will 
  * display a preview of the active camera feed.
  */
-@property(readonly, readonly) OTVideoView* view;
+@property(readonly) OTVideoView* view;
 
 /**
  * A string that will be associated with this publisher's stream. This string is displayed at the bottom of publisher

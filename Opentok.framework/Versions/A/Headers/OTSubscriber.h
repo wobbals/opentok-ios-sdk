@@ -28,21 +28,21 @@
  * one and only one <OTSession> associated with it, and this property
  * is immutable.
  */
-@property(nonatomic, readonly) OTSession* session;
+@property(readonly) OTSession* session;
 
 /**
  * The stream this subscriber is bound to. Any media channels
  * on the stream should be available for display/playback with
  * this instance.
  */
-@property(nonatomic, readonly) OTStream* stream;
+@property(readonly) OTStream* stream;
 
 /**
  * The view containing a playback buffer for associated video data. Add this
  * view to your view heirarchy to display a video
  * stream.
  */
-@property(nonatomic, readonly) OTVideoView* view;
+@property(readonly) OTVideoView* view;
 
 /**
  * The <OTSubscriberDelegate> object that serves as a delegate,
