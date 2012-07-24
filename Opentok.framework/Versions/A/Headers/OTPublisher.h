@@ -86,16 +86,14 @@
 /** @name Controlling audio and video output for a publisher */
 
 /**
- * Whether to publish audio. Set this property immediately after initializing the OTPublisher object;
- * otherwise, it will have no effect.
+ * Whether to publish audio. 
  *
  * The default value is TRUE.
  */
 @property(atomic) BOOL publishAudio;
  
 /**
- * Whether to publish video. Set this property immediately after initializing the OTPublisher object;
- * otherwise, it will have no effect.
+ * Whether to publish video. 
  *
  * The default value is TRUE.
  */
