@@ -39,10 +39,10 @@
 @property(readonly) NSString* streamId;
 
 /**
- * The type of the stream. This value can be `"basic"`, `"multiplexed"`, or `"archive"`.
+ * The type of the stream. This value can be `"basic"` or `"archive"`.
  * The value `"basic"` identifies a stream published by a user connected to the session.
- * The value `"multiplexed"` identifies a multiplexed stream, created by the OpenTok server.
- * The value `"archive"` identifies an archive stream (from an archive being played back).
+ * The value `"archive"` identifies an [archive stream](http://www.tokbox.com/opentok/api/tools/documentation/overview/archiving.html)
+ * (from an archive being played back).
  */
 @property(readonly) NSString* type;
 
