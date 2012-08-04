@@ -15,8 +15,9 @@ typedef enum {
     OTInvalidSessionId,           /* An invalid session ID was provided */
     OTConnectionFailed,           /* There was an error connecting to OpenTok services */
     OTNoMessagingServer,          /* No messaging server is available for this session */
-    OTSDKUpdateRequired,          /* A new version of the OpenTok SDK is available and required to connect to this session */
-    OTP2PSessionUnsupported       /* iOS does not currently support Peer-to-Peer OpenTok sessions */
+    OTSDKUpdateRequired,          /* A new version of the OpenTok SDK is available and required to connect to OpenTok servers */
+    OTP2PSessionUnsupported,      /* iOS does not currently support Peer-to-Peer OpenTok sessions */
+    OTUnknownServerError,         /* The client was unable to communicate with the server, possibly due to a version incompatibility */
 } OTSessionErrorCode;
 
 typedef enum {
