@@ -28,6 +28,7 @@ August 3, 2012
 * This is version 1.2.0 of the OpenTok iOS SDK. 
 * This release officially supports 3G and 4G in addition to wifi internet connections.
 * Video quality in iOS is markedly improved in this release.
+* This release officially supports image snapshot functionality.
 
 June 5, 2012
 
