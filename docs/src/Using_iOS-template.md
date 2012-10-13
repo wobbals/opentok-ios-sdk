@@ -38,11 +38,9 @@ of the sample application in XCode project browser. Drag and drop the contents o
 
 You can connect to the same OpenTok session that the OpenTokHello sample app uses by going to http://www.tokbox.com/opentok/api/tools/js/tutorials/helloworld.html. You can generate a new session ID at this URL:
 
-http://staging.tokbox.com/hl/session/create
+http://www.tokbox.com/opentok/api/tools/generator
 
-You can also create a web page that connects to the same session as the OpenTokHello sample app. Be sure to load the OpenTok JavaScript library (TB.js) from the following location:
-
-	<script src="http://staging.tokbox.com/v0.91/js/TB.min.js" ></script>
+You can also create a web page that connects to the same session as the OpenTokHello sample app.
 
 Known issues
 ------------
