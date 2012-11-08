@@ -109,6 +109,17 @@
  */
 @property(atomic) AVCaptureDevicePosition cameraPosition;
 
+/**
+ * Scaling behavior for portrait-oriented application views. Full-pixel will be supported in a future version.
+ */
+typedef enum {
+    OTPublisherScaleModeFill,
+    OTPublisherScaleModePillarbox,
+    OTPublisherScaleModeFullPixel
+} OTPublisherScaleMode;
+
+@property(atomic) OTPublisherScaleMode scaleMode;
+
 @end
 
 
