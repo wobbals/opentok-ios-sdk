@@ -103,14 +103,6 @@ edit the `@interface` declaration in the ViewController.h file to the following:
 See the code in the OpenTokHello application.
 
 
-Switching from staging to production
-------------------------------------
-
-When you are ready to distribute your app (or to test a production version of your app), switch from using the OpenTok staging media server to the
-OpenTok production media server (see [Testing and production](http://www.tokbox.com/opentok/api/tools/js/documentation/overview/production.html)).
-You can specify that your application connects to the OpenTok production server when you call `[OTSession initWithSessionId:delegate:environment:]`.
-
-
 Connect with TokBox and with other OpenTok developers
 -----------------------------------------------------
 
