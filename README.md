@@ -62,7 +62,7 @@ Known issues
 
 * Our graphics rendering pipeline causes this error to be logged when debugging: "CGContextDrawImage: invalid context 0x0." This should not affect the performance of your app. If you experience video quality issues, please let us know.
 
-* iOS 6.1.3 seems to have some issues when the API is running in the background. We are investigating this.
+* iOS 6.1.3 seems to have some issues when the OpenTok library is running in the background. We are investigating this.
 
 For other issues, check the RELEASE_NOTES.txt file in the libOpentok directory.
 
