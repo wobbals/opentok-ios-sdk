@@ -21,6 +21,14 @@ Support is available at the OpenTok forums: http://www.tokbox.com/forums/
 New features
 ------------
 
+April 5, 2013
+
+* This is version 1.4 of the OpenTok iOS SDK.
+* You can now specify the camera a publisher uses by setting the `[OTPublisher cameraPosition]` property. The OTPublisherDelegate sends
+the `[OTPublisherDelegate publisherDidChange:cameraPosition:]` message in response to a camera change.
+* Publishers and subscribers now continue to publish and subscribe to streams when running in the background.
+* This release includes bug fixes to improve performance and stability.
+
 August 3, 2012
 
 * This is version 1.2.0 of the OpenTok iOS SDK. 
@@ -53,6 +61,8 @@ Known issues
 * You cannot publish streams in the iOS Simulator. Build and deploy to a supported iOS device.
 
 * Our graphics rendering pipeline causes this error to be logged when debugging: "CGContextDrawImage: invalid context 0x0." This should not affect the performance of your app. If you experience video quality issues, please let us know.
+
+* iOS 6.1.3 seems to have some issues when the API is running in the background. We are investigating this.
 
 For other issues, check the RELEASE_NOTES.txt file in the libOpentok directory.
 
