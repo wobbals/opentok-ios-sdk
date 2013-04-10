@@ -21,6 +21,12 @@ Support is available at the OpenTok forums: http://www.tokbox.com/forums/
 New features
 ------------
 
+April 9, 2013
+
+* This is version 1.4.1 of the OpenTok iOS SDK.
+* We have corrected the name of the `[OTPublisherDelegate publisher:didChangeCameraPosition:]` message. (See the notes for
+April 5, 2013.)
+
 April 5, 2013
 
 * This is version 1.4 of the OpenTok iOS SDK.
