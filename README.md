@@ -18,26 +18,29 @@ https://github.com/opentok/OpenTok-iOS-Basic-Tutorial
 
 Support is available at the OpenTok forums: http://www.tokbox.com/forums/
 
-New features
-------------
+Release Notes
+-------------
 
-April 9, 2013
+May 16, 2013 - Version 1.4.2
 
-* This is version 1.4.1 of the OpenTok iOS SDK.
-* We have corrected the name of the `[OTPublisherDelegate publisher:didChangeCameraPosition:]` message. (See the notes for
+* Fixed some issues with running OpenTok applications in the background.
+* Added native support for armv7s architecture.
+* Fixed a bug that was causing inconsistent UI when manipulating media track functions (eg. publishVideo, subscribeToAudio, etc.)
+
+April 9, 2013 - Version 1.4.1
+
+* Corrected the name of `[OTPublisherDelegate publisher:didChangeCameraPosition:]` message. (See the notes for
 April 5, 2013.)
 
-April 5, 2013
+April 5, 2013 - Version 1.4.0
 
-* This is version 1.4 of the OpenTok iOS SDK.
 * You can now specify the camera a publisher uses by setting the `[OTPublisher cameraPosition]` property. The OTPublisherDelegate sends
 the `[OTPublisherDelegate publisherDidChange:cameraPosition:]` message in response to a camera change.
 * Publishers and subscribers now continue to publish and subscribe to streams when running in the background.
 * This release includes bug fixes to improve performance and stability.
 
-August 3, 2012
+August 3, 2012 - Version 1.2.0
 
-* This is version 1.2.0 of the OpenTok iOS SDK. 
 * This release officially supports 3G and 4G in addition to wifi internet connections.
 * Video quality in iOS is markedly improved in this release.
 * This release officially supports image snapshot functionality.
