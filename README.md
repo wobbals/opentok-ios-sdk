@@ -147,6 +147,13 @@ to copy them from the OpenTokHello sample app.
 	CoreAudio.framework, CoreMedia.framework, CoreTelephony.framework, CoreVideo.framework, libz.dylib, libstdc++.dylib, MobileCoreServices.framework,
 	OpenGLES.framework, QuartzCore.framework, Security.framework, SystemConfiguration.framework.
 
+6. When running in the background, the OpenTok SDK requires certain Info.pList settings to continue publishing and subscribing to
+audio video streams. In XCode, open Info tab for your app's target and add a Required Background Modes entry (if it does not already
+exist). Add the following to the list of required background modes:
+
+	- App plays audio
+	- App provides Voice over IP services
+
 Next steps:
 
 1. In the ViewController.h file, add the following line (after `import <UIKit/UIKit.h>`):
