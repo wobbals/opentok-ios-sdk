@@ -5,11 +5,11 @@ This package contains what you need to get you started using the OpenTok iOS SDK
 
 The OpenTok iOS SDK lets you use OpenTok video sessions in apps you build for iPad, iPhone, and iPod touch devices.
 This means you can use OpenTok video sessions that connect iOS users with each other and with web clients.
-For information on OpenTok, see http://www.tokbox.com/.
+For information on OpenTok, see http://tokbox.com/.
 
 Documentation of the SDK is available here: 
 
-http://www.tokbox.com/opentok/ios/docs/index.html
+http://tokbox.com/opentok/v1/libraries/clients/ios/
 
 The OpenTokHelloWorld project is simplest sample app. The OpenTokBasic sample uses more of the API. These sample apps are also at GitHub:
 
@@ -108,7 +108,7 @@ in the Opentok.framework/Versions/A/Resources subdirectory of the OpenTok iOS SD
 We cannot pre-link them in the OpenTok framework, so your project must link them. Expand the "Frameworks" directory
 of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
 
-You can connect to the same OpenTok session that the OpenTokHello sample app uses by going to http://www.tokbox.com/opentok/docs/js/tutorials//helloworld.html. You can generate a new session ID at this URL:
+You can connect to the same OpenTok session that the OpenTokHello sample app uses by going to http://tokbox.com/opentok/v1/tutorials/hello-world/js/. You can generate a new session ID at this URL:
 
 https://dashboard.tokbox.com/projects
 
