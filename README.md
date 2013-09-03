@@ -9,7 +9,7 @@ For information on OpenTok, see http://tokbox.com/.
 
 Documentation of the SDK is available here: 
 
-http://tokbox.com/opentok/v1/libraries/clients/ios/
+http://tokbox.com/opentok/v1/libraries/client/ios/index.html
 
 The OpenTokHelloWorld project is simplest sample app. The OpenTokBasic sample uses more of the API. These sample apps are also at GitHub:
 
@@ -25,7 +25,7 @@ May 16, 2013 - Version 1.4.2
 
 * Fixed some issues with running OpenTok applications in the background.
 * Added native support for armv7s architecture.
-* Fixed a bug that was causing inconsistent UI when manipulating media track functions (eg. publishVideo, subscribeToAudio, etc.)
+* Fixed a bug that was causing inconsistent UI when manipulating media track functions (e.g. publishVideo, subscribeToAudio, etc.)
 
 April 9, 2013 - Version 1.4.1
 
@@ -108,7 +108,7 @@ in the Opentok.framework/Versions/A/Resources subdirectory of the OpenTok iOS SD
 We cannot pre-link them in the OpenTok framework, so your project must link them. Expand the "Frameworks" directory
 of the sample application in XCode project browser. Drag and drop the contents of this directory into your own iOS project.
 
-You can connect to the same OpenTok session that the OpenTokHello sample app uses by going to http://tokbox.com/opentok/v1/tutorials/hello-world/js/. You can generate a new session ID at this URL:
+You can generate a new session ID at this URL:
 
 https://dashboard.tokbox.com/projects
 
