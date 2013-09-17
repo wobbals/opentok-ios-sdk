@@ -21,6 +21,10 @@ Support is available at the OpenTok forums: http://www.tokbox.com/forums/
 Release Notes
 -------------
 
+September 17, 2003 - Version 1.4.3
+
+* Fixed a bug that caused clients running iOS 7 to crash.
+
 May 16, 2013 - Version 1.4.2
 
 * Fixed some issues with running OpenTok applications in the background.
